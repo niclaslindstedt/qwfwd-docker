@@ -10,6 +10,7 @@ RUN git clone https://github.com/deurk/qwfwd.git && cd qwfwd && ./configure && m
 
 FROM ubuntu:18.04 as run
 WORKDIR /qwfwd
+RUN apt-get update && apt-get install -y gettext
 COPY --from=build /build/qwfwd/qwfwd.bin ./qwfwd.bin
 COPY files/qwfwd.cfg.template ./
 COPY scripts/entrypoint.sh /
