@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y gcc git libc6-dev make gettext
 # Build qwfwd
 RUN git clone https://github.com/deurk/qwfwd.git && cd qwfwd && ./configure && make
 
-FROM build as run
+FROM ubuntu:18.04 as run
 WORKDIR /qwfwd
 COPY --from=build /build/qwfwd/qwfwd.bin ./qwfwd.bin
 COPY files/qwfwd.cfg.template ./
