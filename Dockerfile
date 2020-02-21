@@ -3,17 +3,14 @@ ARG DEBIAN_FRONTEND=noninteractive
 WORKDIR /build
 
 # Install prerequisites
-RUN apt-get update && apt-get install -y --no-install-recommends apt-utils \
-  && apt-get install -y curl gcc git libc6-dev make pkg-config unzip wget dos2unix gettext
+RUN apt-get update && apt-get install -y gcc git libc6-dev make gettext
 
-# Build ktx
-RUN git clone https://github.com/deurk/qwfwd.git && cd qwfwd \
-  && ./configure && make
-# -> /build/qwfwd/qwfwd.bin
+# Build qwfwd
+RUN git clone https://github.com/deurk/qwfwd.git && cd qwfwd && ./configure && make
 
-FROM build as install
+FROM build as run
 WORKDIR /qwfwd
 COPY --from=build /build/qwfwd/qwfwd.bin ./qwfwd.bin
-COPY qwfwd.cfg.template ./
-COPY entrypoint.sh /
+COPY files/qwfwd.cfg.template ./
+COPY scripts/entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]

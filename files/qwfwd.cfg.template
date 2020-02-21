@@ -1,5 +1,5 @@
-set hostname "$HOSTNAME QWFWD"
-set net_port $QWFWD_PORT
+set hostname "$HOSTNAME"
+set net_port $LISTEN_PORT
 set net_ip $LISTEN_IP
 set sys_readstdin 0                             // allows qwfwd to run in background
 set developer 0

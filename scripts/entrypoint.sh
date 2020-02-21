@@ -1,8 +1,8 @@
 #!/bin/sh
 
-echo "Configuring QWFWD"
+echo "Configuring QWFWD..."
 envsubst < /qwfwd/qwfwd.cfg.template > /qwfwd/qwfwd.cfg
 
-echo "Starting nQuake"
+echo "Starting QWFWD"
 cd /qwfwd
 ./qwfwd.bin
