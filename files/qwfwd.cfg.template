@@ -1,7 +1,8 @@
 set hostname           $HOSTNAME
+set net_ip             localhost
 set developer          0          // developer mode (0=disabled, 1=enabled)
 set masters_heartbeat  1          // allow sending heartbeats to masters (0=disabled, 1=enabled)
 set masters_query      1          // query the master server list (0=disabled, 1=enabled)
 set sys_readstdin      1          // read standard input since we're running this in Docker
 
-set masters            master.quakeservers.net:27000 qwmaster.ocrana.de:27000 master.quakeworld.nu:27000 qwmaster.fodquake.net:27000
+set masters            master.quakeservers.net:27000 qwmaster.ocrana.de:27000 qwmaster.fodquake.net:27000

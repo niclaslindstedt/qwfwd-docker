@@ -8,7 +8,8 @@ FROM ubuntu:18.04 as run
 WORKDIR /qwfwd
 RUN apt-get update && apt-get install -y gettext \
   && rm -rf /var/lib/apt/lists/*
+COPY files .
 COPY --from=build /build/qwfwd/qwfwd.bin ./qwfwd.bin
-COPY files/qwfwd.cfg.template ./
 COPY scripts/entrypoint.sh /
+COPY scripts/health_check.sh /
 ENTRYPOINT ["/entrypoint.sh"]
