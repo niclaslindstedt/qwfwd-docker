@@ -11,5 +11,4 @@ RUN apt-get update && apt-get install -y gettext \
 COPY files .
 COPY --from=build /build/qwfwd/qwfwd.bin ./qwfwd.bin
 COPY scripts/entrypoint.sh /
-COPY scripts/health_check.sh /
 ENTRYPOINT ["/entrypoint.sh"]
